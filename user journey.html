@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grocery Shopping User Journey Map</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+        .journey-map {
+            display: flex;
+            overflow-x: auto;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+        }
+        .stage {
+            min-width: 200px;
+            margin-right: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .stage-header {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+        }
+        .stage-content {
+            padding: 15px;
+        }
+        .actions {
+            margin-bottom: 15px;
+        }
+        .thoughts {
+            margin-bottom: 15px;
+        }
+        .emotions {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .emotion {
+            font-size: 24px;
+            margin: 0 5px;
+        }
+        .pain-points {
+            background-color: #ffebee;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .opportunities {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        h3 {
+            margin-top: 5px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        .persona-section {
+            margin-bottom: 40px;
+        }
+        .persona-tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .persona-tab {
+            padding: 10px 20px;
+            background-color: #ddd;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+        }
+        .persona-tab.active {
+            background-color: #3498db;
+            color: white;
+        }
+        .persona-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .persona-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .persona-info {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .persona-info h2 {
+            color: #3498db;
+            margin-top: 0;
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 0 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            border-radius: 3px;
+        }
+        .insights {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+        .insights h2 {
+            color: #3498db;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Grocery Shopping User Journey Map</h1>
+            <p>Understanding the needs of the contemporary grocery shopper</p>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #ffebee;"></div>
+                <span>Pain Points</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #e8f5e9;"></div>
+                <span>Opportunities</span>
+            </div>
+        </div>
+
+        <div class="persona-section">
+            <div class="persona-tabs">
+                <div class="persona-tab active" onclick="switchPersona('riley')">Riley</div>
+                <div class="persona-tab" onclick="switchPersona('kendra')">Kendra</div>
+                <div class="persona-tab" onclick="switchPersona('rosalynd')">Rosalynd</div>
+            </div>
+
+            <!-- Riley's Journey -->
+            <div id="riley" class="persona-content active">
+                <div class="persona-info">
+                    <h2>Riley's Profile</h2>
+                    <p><strong>Shopping Frequency:</strong> Once a month</p>
+                    <p><strong>Time Spent:</strong> Around an hour</p>
+                    <p><strong>Preferred Stores:</strong> Walmart/Safeway/Target</p>
+                    <p><strong>Delivery Usage:</strong> Never for groceries, uses DoorDash 5 times a month</p>
+                </div>
+
+                <div class="journey-map">
+                    <div class="stage">
+                        <div class="stage-header">Planning</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Makes monthly shopping list</p>
+                                <p>Decides which store to visit</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"I need to plan carefully since I only go once a month"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">😐</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>May need to remember a lot of items for a full month</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Monthly planning tools or budget calculators</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-header">Store Selection</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Chooses between Walmart, Safeway, or Target</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"Which store will have everything I need today?"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">🤔</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>May need to visit multiple stores</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Store inventory comparison tools</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-header">Shopping Experience</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Spends around an hour in store</p>
+                                <p>Navigates store layout</p>
+                                <p>Selects items</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"What was on my list again?"</p>
+                                <p>"This seems expensive"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">😕</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>Concerned about prices</p>
+                                <p>Prices don't include taxes until checkout</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Real-time price/tax calculator</p>
+                                <p>Interactive shopping list that matches store layout</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-header">Checkout</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Waits in line</p>
+                                <p>Discovers final price with taxes</p>
+                                <p>Pays for groceries</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"The taxes make it more expensive than expected"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">😠</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>Surprised by final price after taxes</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Pre-checkout price calculator with tax estimation</p>
+                                <p>Express checkout options</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-header">Post-Shopping</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Transports groceries home</p>
+                                <p>Stores items for a month</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"Hope I bought enough to last the month"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">😐</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>May run out of items before next monthly trip</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Pantry management tools</p>
+                                <p>Small-item delivery service for emergencies</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kendra's Journey -->
+            <div id="kendra" class="persona-content">
+                <div class="persona-info">
+                    <h2>Kendra's Profile</h2>
+                    <p><strong>Shopping Frequency:</strong> Twice a month</p>
+                    <p><strong>Time Spent:</strong> 1-2 hours</p>
+                    <p><strong>Preferred Stores:</strong> Fresh Market (primary), Meijer (for non-food items)</p>
+                    <p><strong>Delivery Usage:</strong> Never uses grocery delivery services</p>
+                </div>
+
+                <div class="journey-map">
+                    <div class="stage">
+                        <div class="stage-header">Planning</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Creates bi-weekly shopping list</p>
+                                <p>Plans visits to multiple stores</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"I need to figure out which items to get at which store"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">😐</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>Needs to plan for multiple store visits</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Multi-store shopping list organizer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-header">Store Selection</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Visits Fresh Market for food items</p>
+                                <p>Visits Meijer for non-food essentials</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"I wish one store had everything I need"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">😕</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>Time consumption visiting multiple stores</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>One-stop shopping with quality produce options</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-header">Shopping Experience</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Spends 1-2 hours shopping</p>
+                                <p>Carefully selects produce and meat</p>
+                                <p>Navigates crowded store</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"This produce doesn't look fresh"</p>
+                                <p>"It's too crowded in here"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">😡</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>Crowded stores</p>
+                                <p>Poor quality or out-of-stock produce/meat</p>
+                                <p>Slow restocking</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Real-time inventory monitoring</p>
+                                <p>Produce quality ratings</p>
+                                <p>Less crowded shopping paths</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-header">Checkout</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Waits in long checkout lines</p>
+                                <p>Pays high prices for groceries</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"These lines are taking forever"</p>
+                                <p>"These prices are so high"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">😠</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>Long wait times at checkout</p>
+                                <p>High prices</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Mobile checkout options</p>
+                                <p>Value transparency</p>
+                                <p>Queue management system</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-header">Post-Shopping</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Transports groceries home</p>
+                                <p>Stores items for two weeks</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"I hope the produce stays fresh"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">🙂</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>Produce may spoil before next shopping trip</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Produce freshness tracking</p>
+                                <p>Storage optimization tips</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rosalynd's Journey -->
+            <div id="rosalynd" class="persona-content">
+                <div class="persona-info">
+                    <h2>Rosalynd's Profile</h2>
+                    <p><strong>Shopping Frequency:</strong> Once a week, sometimes twice for last-minute items</p>
+                    <p><strong>Time Spent:</strong> Around 45 minutes</p>
+                    <p><strong>Preferred Stores:</strong> Walmart</p>
+                    <p><strong>Delivery Usage:</strong> Once every few months</p>
+                </div>
+
+                <div class="journey-map">
+                    <div class="stage">
+                        <div class="stage-header">Planning</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Creates weekly shopping list</p>
+                                <p>Decides on Walmart as primary store</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"Walmart has everything I need in one place"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">🙂</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>Occasionally needs last-minute items mid-week</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Predictive shopping list based on previous purchases</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-header">Store Selection</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Consistently shops at Walmart</p>
+                                <p>Values convenience and affordability</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"I like having everything in one place at affordable prices"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">😊</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>None significant in store selection</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Loyalty rewards for consistent shoppers</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-header">Shopping Experience</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Spends about 45 minutes shopping</p>
+                                <p>Personally selects produce</p>
+                                <p>Navigates store layout</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"I need to backtrack to get items I missed"</p>
+                                <p>"I want to select my own produce"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">😕</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>Unintuitive store layout causing backtracking</p>
+                                <p>Items sometimes out of stock</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Optimized shopping path based on shopping list</p>
+                                <p>Real-time inventory alerts</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-header">Checkout</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Waits in long lines, especially on weekends</p>
+                                <p>Checks out all items</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"These weekend lines are so long"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">😠</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>Long checkout lines, especially on weekends</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Queue prediction and management</p>
+                                <p>Expanded self-checkout options</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage">
+                        <div class="stage-header">Post-Shopping</div>
+                        <div class="stage-content">
+                            <div class="actions">
+                                <h3>Actions</h3>
+                                <p>Transports groceries home</p>
+                                <p>Stores items for the week</p>
+                                <p>May need to make additional trip for forgotten items</p>
+                            </div>
+                            <div class="thoughts">
+                                <h3>Thoughts</h3>
+                                <p>"Did I remember everything I needed?"</p>
+                            </div>
+                            <div class="emotions">
+                                <div class="emotion">😐</div>
+                            </div>
+                            <div class="pain-points">
+                                <h3>Pain Points</h3>
+                                <p>Sometimes forgets items, requiring extra trips</p>
+                            </div>
+                            <div class="opportunities">
+                                <h3>Opportunities</h3>
+                                <p>Smart shopping list that learns from past forgotten items</p>
+                                <p>Quick delivery option for forgotten essentials</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="insights">
+            <h2>Key Insights & Opportunities</h2>
+            <h3>Common Pain Points:</h3>
+            <ul>
+                <li>Long checkout lines are a universal frustration</li>
+                <li>Price concerns are prevalent (visibility of taxes, overall high prices)</li>
+                <li>Store layouts often require inefficient backtracking</li>
+                <li>Product availability issues (out-of-stock items, poor quality produce)</li>
+                <li>Crowded shopping environments</li>
+            </ul>
+            
+            <h3>Design Opportunities:</h3>
+            <ul>
+                <li><strong>Smart Shopping Path:</strong> Technology that optimizes shopping routes based on personal shopping lists</li>
+                <li><strong>Real-time Price & Tax Calculator:</strong> App or cart-mounted device showing running total with taxes</li>
+                <li><strong>Queue Management:</strong> Systems to reduce wait times or make waiting more efficient</li>
+                <li><strong>Inventory Transparency:</strong> Real-time updates on product availability and freshness</li>
+                <li><strong>Multi-store Shopping Management:</strong> Tools to coordinate shopping across different stores</li>
+                <li><strong>Quick Delivery Integration:</strong> Options for emergency or forgotten items</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function switchPersona(persona) {
+            // Hide all persona content
+            var contents = document.getElementsByClassName('persona-content');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            
+            // Deactivate all tabs
+            var tabs = document.getElementsByClassName('persona-tab');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            
+            // Show selected persona content
+            document.getElementById(persona).classList.add('active');
+            
+            // Activate selected tab
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
